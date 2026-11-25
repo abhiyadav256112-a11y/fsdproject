@@ -1,0 +1,473 @@
+/* ==========================================================================
+   PillPing: Elderly Patient Interface Styles (Accessibility First)
+   ========================================================================== */
+
+.patient-body {
+  background-color: #f1f5f9;
+  font-size: 20px;
+  color: #0f172a;
+}
+
+.senior-container {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 24px 20px 80px 20px;
+}
+
+/* Senior Header Bar */
+.senior-header {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: 24px 28px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow-md);
+  border: 2px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.senior-greeting h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.5px;
+}
+
+.senior-greeting p {
+  font-size: 1.15rem;
+  color: #475569;
+  font-weight: 600;
+}
+
+.senior-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Language Switcher */
+.lang-selector {
+  display: flex;
+  background: #f8fafc;
+  border: 2px solid #cbd5e1;
+  border-radius: var(--radius-full);
+  padding: 4px;
+  gap: 4px;
+}
+
+.lang-btn {
+  padding: 8px 14px;
+  font-size: 1rem;
+  font-weight: 700;
+  border: none;
+  background: transparent;
+  color: #475569;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.lang-btn.active {
+  background: var(--primary);
+  color: #ffffff;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Emergency SOS Banner Button */
+.sos-quick-btn {
+  background: #fee2e2;
+  border: 2px solid #ef4444;
+  color: #b91c1c;
+  padding: 12px 18px;
+  border-radius: var(--radius-md);
+  font-size: 1.05rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sos-quick-btn:hover {
+  background: #ef4444;
+  color: #ffffff;
+  transform: scale(1.02);
+}
+
+/* HERO: Next Medicine Reminder Card (Large Full-Screen Focus) */
+.hero-reminder-card {
+  background: #ffffff;
+  border-radius: 28px;
+  padding: 36px 32px;
+  margin-bottom: 32px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  border: 3px solid #3b82f6;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.hero-reminder-card.glow {
+  animation: card-glow 2s infinite ease-in-out;
+}
+
+@keyframes card-glow {
+  0%, 100% { border-color: #3b82f6; box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2); }
+  50% { border-color: #10b981; box-shadow: 0 10px 35px rgba(16, 185, 129, 0.35); }
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #dbeafe;
+  color: #1e40af;
+  font-size: 1.1rem;
+  font-weight: 800;
+  padding: 8px 20px;
+  border-radius: var(--radius-full);
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.hero-time {
+  font-size: 3.2rem;
+  font-weight: 900;
+  color: #1e3a8a;
+  margin-bottom: 8px;
+  line-height: 1.1;
+}
+
+.hero-time-period {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #64748b;
+  margin-bottom: 24px;
+}
+
+.hero-pill-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin: 20px auto 28px auto;
+  padding: 20px;
+  background: #f8fafc;
+  border-radius: 20px;
+  border: 2px dashed #cbd5e1;
+  max-width: 600px;
+}
+
+.hero-pill-img {
+  width: 90px;
+  height: 90px;
+  filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.12));
+}
+
+.hero-med-details {
+  text-align: left;
+}
+
+.hero-med-name {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: #0f172a;
+  line-height: 1.2;
+}
+
+.hero-med-dosage {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #2563eb;
+  margin-top: 4px;
+}
+
+.hero-instruction-box {
+  background: #ecfdf5;
+  border: 2px solid #a7f3d0;
+  color: #065f46;
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  margin: 0 auto 28px auto;
+  max-width: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.btn-read-aloud {
+  background: #10b981;
+  color: #ffffff;
+  border: none;
+  padding: 12px 18px;
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  font-weight: 800;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-read-aloud:hover {
+  background: #047857;
+  transform: translateY(-2px);
+}
+
+/* GIANT SENIOR ACTION BUTTONS */
+.hero-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.btn-giant-confirm {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: #ffffff;
+  border: none;
+  border-radius: 20px;
+  padding: 24px 32px;
+  font-size: 1.65rem;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  box-shadow: 0 10px 24px rgba(16, 185, 129, 0.4);
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.btn-giant-confirm:hover {
+  background: linear-gradient(135deg, #059669, #047857);
+  transform: translateY(-3px);
+  box-shadow: 0 14px 28px rgba(16, 185, 129, 0.45);
+}
+
+.btn-giant-confirm:active {
+  transform: translateY(2px);
+}
+
+.secondary-actions-row {
+  display: flex;
+  gap: 16px;
+}
+
+.btn-snooze-action {
+  flex: 1;
+  background: #fef3c7;
+  border: 2px solid #f59e0b;
+  color: #92400e;
+  border-radius: 16px;
+  padding: 18px 24px;
+  font-size: 1.25rem;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.2s ease;
+}
+
+.btn-snooze-action:hover {
+  background: #fde68a;
+  transform: translateY(-2px);
+}
+
+.btn-already-action {
+  flex: 1;
+  background: #f1f5f9;
+  border: 2px solid #cbd5e1;
+  color: #334155;
+  border-radius: 16px;
+  padding: 18px 24px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-already-action:hover {
+  background: #e2e8f0;
+}
+
+/* TODAY'S MEDICINE TIMETABLE (ACCESSIBLE CARDS) */
+.senior-section-title {
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 36px 0 18px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.schedule-card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.schedule-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 20px 24px;
+  border: 2px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease;
+}
+
+.schedule-card.status-taken {
+  border-color: #a7f3d0;
+  background-color: #f0fdf4;
+}
+
+.schedule-card.status-pending {
+  border-color: #fed7aa;
+}
+
+.schedule-card.status-missed {
+  border-color: #fecaca;
+  background-color: #fff1f2;
+}
+
+.schedule-card-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.card-time-badge {
+  background: #f8fafc;
+  border: 2px solid #cbd5e1;
+  border-radius: 14px;
+  padding: 10px 16px;
+  text-align: center;
+  min-width: 90px;
+}
+
+.card-time-val {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #1e293b;
+}
+
+.card-time-meal {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+.schedule-med-info h3 {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 4px;
+}
+
+.schedule-med-info p {
+  font-size: 1.05rem;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.schedule-card-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.status-pill-big {
+  padding: 10px 20px;
+  border-radius: var(--radius-full);
+  font-size: 1.05rem;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.status-pill-big.taken {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.status-pill-big.pending {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.status-pill-big.missed {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.status-pill-big.snoozed {
+  background: #f3e8ff;
+  color: #7e22ce;
+}
+
+/* EMERGENCY CONTACT BAR */
+.emergency-footer-bar {
+  margin-top: 40px;
+  background: #ffffff;
+  border: 2px solid #fca5a5;
+  border-radius: 20px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.emergency-info h3 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #991b1b;
+}
+
+.emergency-info p {
+  font-size: 1.05rem;
+  color: #475569;
+}
+
+.btn-emergency-call {
+  background: #dc2626;
+  color: #ffffff;
+  padding: 16px 28px;
+  border-radius: 16px;
+  font-size: 1.2rem;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  box-shadow: 0 6px 16px rgba(220, 38, 38, 0.35);
+  border: none;
+  cursor: pointer;
+}
+
+.btn-emergency-call:hover {
+  background: #b91c1c;
+}

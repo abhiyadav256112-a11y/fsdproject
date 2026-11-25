@@ -1,0 +1,25 @@
+{
+  "name": "pillping-carecircle",
+  "version": "1.0.0",
+  "description": "Senior-friendly medication management web application with remote caregiver adherence monitoring",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "node backend/server.js"
+  },
+  "keywords": [
+    "healthcare",
+    "senior-care",
+    "medication-tracker",
+    "adherence",
+    "socketio",
+    "sqlite"
+  ],
+  "author": "PillPing Team",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "socket.io": "^4.8.1"
+  }
+}

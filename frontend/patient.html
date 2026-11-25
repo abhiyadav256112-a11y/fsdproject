@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PillPing - Senior Patient Reminders</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/patient.css">
+</head>
+<body class="patient-body">
+
+  <div class="senior-container">
+    
+    <!-- Header with Greeting & Multi-Language Switcher & SOS Quick Button -->
+    <header class="senior-header">
+      <div class="senior-greeting">
+        <h1 id="senior-greeting-text">Good Morning!</h1>
+        <p id="senior-subgreeting-text">Ramachandra Rao • Caregiver: Ananya Rao</p>
+      </div>
+
+      <div class="senior-controls">
+        <!-- Language Switcher: English, Telugu, Hindi -->
+        <div class="lang-selector">
+          <button class="lang-btn active" id="lang-btn-en" onclick="changeLanguage('en')">English</button>
+          <button class="lang-btn" id="lang-btn-te" onclick="changeLanguage('te')">తెలుగు</button>
+          <button class="lang-btn" id="lang-btn-hi" onclick="changeLanguage('hi')">हिन्दी</button>
+        </div>
+
+        <!-- Quick SOS Button -->
+        <button class="sos-quick-btn" onclick="window.SeniorApp.handleEmergencySOS()" title="Emergency SOS Button">
+          🚨 <span id="sos-btn-label">SOS</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- HERO REMINDER CARD (Large High-Contrast Focus Area) -->
+    <main>
+      <div id="hero-reminder-card" class="hero-reminder-card glow">
+        <!-- Dynamically rendered by reminder.js -->
+      </div>
+
+      <!-- TODAY'S MEDICATION SCHEDULE TIMETABLE -->
+      <section style="margin-top: 32px;">
+        <div class="senior-section-title">
+          <span id="timetable-title">Today's Medication Schedule</span>
+          <a href="./caregiver.html" style="font-size:1rem; font-weight:700; color:var(--primary); text-decoration:none;">
+            Caregiver Portal →
+          </a>
+        </div>
+        <div id="schedule-card-list" class="schedule-card-list">
+          <!-- Populated dynamically by reminder.js -->
+        </div>
+      </section>
+
+      <!-- EMERGENCY CALL BAR -->
+      <footer class="emergency-footer-bar" style="margin-top: 40px;">
+        <div class="emergency-info">
+          <h3>Emergency Contact / Primary Caregiver</h3>
+          <p>Ananya Rao (Daughter): <strong>+91 98765 12345</strong></p>
+        </div>
+        <button class="btn-emergency-call" onclick="window.SeniorApp.handleEmergencySOS()">
+          🚨 <span>EMERGENCY SOS CALL</span>
+        </button>
+      </footer>
+    </main>
+
+  </div>
+
+  <div id="toast-container" style="position:fixed; bottom:20px; right:20px; z-index:9999;"></div>
+
+  <!-- Pure Frontend Scripts -->
+  <script src="./js/store.js"></script>
+  <script src="./js/voice.js"></script>
+  <script src="./js/reminder.js"></script>
+  <script>
+    // Language Change Handler
+    function changeLanguage(lang) {
+      window.VoiceService.setLanguage(lang);
+      
+      // Update buttons
+      ['en', 'te', 'hi'].forEach(l => {
+        const btn = document.getElementById(`lang-btn-${l}`);
+        if (btn) btn.className = `lang-btn ${l === lang ? 'active' : ''}`;
+      });
+
+      // Update static labels
+      const V = window.VoiceService;
+      const hour = new Date().getHours();
+      const greetingKey = hour < 12 ? 'greetingMorning' : (hour < 17 ? 'greetingAfternoon' : 'greetingEvening');
+      
+      const greetingEl = document.getElementById('senior-greeting-text');
+      if (greetingEl) greetingEl.textContent = V.getTranslation(greetingKey);
+
+      const titleEl = document.getElementById('timetable-title');
+      if (titleEl) titleEl.textContent = V.getTranslation('todaySchedule');
+
+      const sosLabel = document.getElementById('sos-btn-label');
+      if (sosLabel) sosLabel.textContent = lang === 'te' ? 'సహాయం (SOS)' : (lang === 'hi' ? 'मदद (SOS)' : 'SOS');
+
+      // Re-render hero and schedule with localized text
+      window.SeniorApp.loadSeniorScreen();
+    }
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      const savedLang = localStorage.getItem('pillping_lang') || 'en';
+      changeLanguage(savedLang);
+      window.SeniorApp.init();
+    });
+  </script>
+</body>
+</html>

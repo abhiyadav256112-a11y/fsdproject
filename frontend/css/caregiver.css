@@ -1,0 +1,485 @@
+/* ==========================================================================
+   PillPing: Caregiver Dashboard Styles
+   ========================================================================== */
+
+.caregiver-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+/* Caregiver Header & Patient Profile Card */
+.cg-header-card {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: 24px 28px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.cg-patient-profile {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.cg-patient-avatar {
+  width: 58px;
+  height: 58px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, #3b82f6, #6366f1);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 800;
+  box-shadow: 0 4px 10px rgba(59, 130, 246, 0.25);
+}
+
+.cg-patient-meta h2 {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+.cg-patient-meta p {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+}
+
+.cg-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* HACKATHON LIVE DEMO CONTROL BAR */
+.demo-control-bar {
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  color: #ffffff;
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+  box-shadow: var(--shadow-md);
+  border: 1px solid #334155;
+}
+
+.demo-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #94a3b8;
+}
+
+.demo-title span {
+  background: #3b82f6;
+  color: #ffffff;
+  font-size: 0.72rem;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+}
+
+.demo-buttons-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.btn-demo {
+  background: #334155;
+  color: #f8fafc;
+  border: 1px solid #475569;
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.btn-demo:hover {
+  background: #475569;
+  transform: translateY(-1px);
+}
+
+.btn-demo-alert {
+  background: #7f1d1d;
+  border-color: #991b1b;
+  color: #fecaca;
+}
+
+.btn-demo-alert:hover {
+  background: #991b1b;
+  color: #ffffff;
+}
+
+.btn-demo-reminder {
+  background: #14532d;
+  border-color: #166534;
+  color: #bbf7d0;
+}
+
+.btn-demo-reminder:hover {
+  background: #166534;
+  color: #ffffff;
+}
+
+/* STATS METRIC CARDS ROW */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 18px;
+  margin-bottom: 28px;
+}
+
+.stat-card {
+  background: #ffffff;
+  border-radius: var(--radius-md);
+  padding: 20px 24px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: transform 0.2s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat-value {
+  font-size: 2.1rem;
+  font-weight: 900;
+  color: var(--text-main);
+  line-height: 1.1;
+  margin-top: 4px;
+}
+
+.stat-icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+}
+
+.stat-total .stat-icon-box { background: #eff6ff; color: #2563eb; }
+.stat-completed .stat-icon-box { background: #ecfdf5; color: #10b981; }
+.stat-pending .stat-icon-box { background: #fffbeb; color: #f59e0b; }
+.stat-missed .stat-icon-box { background: #fef2f2; color: #ef4444; }
+.stat-adherence .stat-icon-box { background: #f5f3ff; color: #8b5cf6; }
+
+/* 2-COLUMN MAIN CONTENT LAYOUT */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+}
+
+@media (max-width: 992px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.dashboard-panel {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 24px;
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.panel-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* WEEKLY ADHERENCE SCORECARD COMPONENT */
+.adherence-hero {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  background: #f8fafc;
+  padding: 18px 24px;
+  border-radius: var(--radius-md);
+  margin-bottom: 20px;
+  border: 1px solid #e2e8f0;
+}
+
+.adherence-rate-circle {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: conic-gradient(var(--success) calc(var(--adherence-percent, 94) * 1%), #e2e8f0 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.adherence-rate-circle::after {
+  content: '';
+  position: absolute;
+  width: 72px;
+  height: 72px;
+  background: #ffffff;
+  border-radius: 50%;
+}
+
+.adherence-rate-value {
+  position: relative;
+  z-index: 2;
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: var(--text-main);
+}
+
+.adherence-info h4 {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+.adherence-formula {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  font-family: monospace;
+  background: #ffffff;
+  padding: 4px 8px;
+  border-radius: 6px;
+  display: inline-block;
+  margin-top: 6px;
+  border: 1px solid #cbd5e1;
+}
+
+/* 7-DAY CALENDAR TILES */
+.adherence-week-strip {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.week-day-tile {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 10px 6px;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.week-day-tile.today {
+  border: 2px solid var(--primary);
+  background: var(--primary-light);
+}
+
+.day-name {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.day-rate {
+  font-size: 1rem;
+  font-weight: 800;
+  margin: 4px 0;
+}
+
+.day-dots {
+  display: flex;
+  justify-content: center;
+  gap: 3px;
+}
+
+.dose-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.dose-dot.taken { background-color: var(--success); }
+.dose-dot.missed { background-color: var(--danger); }
+.dose-dot.pending { background-color: var(--warning); }
+
+/* TODAY'S MEDICATION SCHEDULE TABLE */
+.schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.schedule-table th {
+  text-align: left;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.schedule-table td {
+  padding: 14px;
+  border-bottom: 1px solid #f1f5f9;
+  font-size: 0.92rem;
+}
+
+.schedule-table tr:hover td {
+  background-color: #f8fafc;
+}
+
+.table-med-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.table-med-img {
+  width: 36px;
+  height: 36px;
+}
+
+/* LIVE ALERTS AND NOTIFICATIONS FEED */
+.alert-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 480px;
+  overflow-y: auto;
+}
+
+.alert-item {
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  border-left: 4px solid var(--primary);
+  background: #f8fafc;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.alert-item.alert-missed_dose {
+  border-left-color: var(--danger);
+  background: #fef2f2;
+}
+
+.alert-item.alert-refill_warning {
+  border-left-color: var(--warning);
+  background: #fffbeb;
+}
+
+.alert-item.alert-sos {
+  border-left-color: #dc2626;
+  background: #fee2e2;
+  animation: urgent-pulse 1.5s infinite;
+}
+
+@keyframes urgent-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(220, 38, 38, 0); }
+}
+
+.alert-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.alert-badge {
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+}
+
+.alert-time {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.alert-message {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-main);
+  line-height: 1.4;
+}
+
+/* MEDICINE INVENTORY LIST */
+.inventory-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.inventory-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  background: #f8fafc;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+}
+
+.inventory-pill-count {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.pill-count-low {
+  color: var(--danger);
+  font-weight: 800;
+}

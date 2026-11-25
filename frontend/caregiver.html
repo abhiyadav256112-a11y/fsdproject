@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Caregiver Dashboard - PillPing: CareCircle</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/caregiver.css">
+</head>
+<body>
+
+  <!-- Top Navbar -->
+  <header class="navbar">
+    <a href="./index.html" class="brand-logo">
+      <div class="brand-icon">💊</div>
+      <div>PillPing <span style="font-weight:400; color:var(--text-muted); font-size:1.1rem;">CareCircle</span></div>
+    </a>
+    <div style="display:flex; align-items:center; gap:16px;">
+      <div class="live-pulse" title="Synchronized across windows in real-time">
+        <span class="pulse-dot"></span>
+        <span>Real-Time Sync Active</span>
+      </div>
+      <a href="./patient.html" class="btn btn-outline" style="padding:6px 14px; font-size:0.85rem;" target="_blank">
+        🧓 Open Senior Screen ↗
+      </a>
+      <a href="./split-demo.html" class="btn btn-primary" style="padding:6px 14px; font-size:0.85rem;">
+        ⚡ Split Demo View
+      </a>
+      <a href="./login.html" class="nav-link" style="font-size:0.88rem;">Profiles</a>
+    </div>
+  </header>
+
+  <div class="caregiver-container">
+
+    <!-- Patient Profile Header Card -->
+    <section class="cg-header-card">
+      <div class="cg-patient-profile">
+        <div class="cg-patient-avatar">🧓</div>
+        <div class="cg-patient-meta">
+          <h2 id="patient-display-name">Ramachandra Rao</h2>
+          <p id="patient-display-meta">Age: 74 • Primary Caregiver: Ananya Rao (Daughter) • Notes: Hypertension, Type 2 Diabetes</p>
+        </div>
+      </div>
+      <div class="cg-header-actions">
+        <button class="btn btn-primary" onclick="window.CaregiverApp.openAddMedicationModal()">
+          + Add Medication
+        </button>
+        <button class="btn btn-outline" onclick="window.CaregiverApp.refreshDashboardData()" title="Refresh Data">
+          🔄 Refresh
+        </button>
+      </div>
+    </section>
+
+    <!-- HACKATHON LIVE DEMO CONTROL BAR -->
+    <section class="demo-control-bar">
+      <div class="demo-title">
+        <span>Hackathon Live Demo Bar</span>
+        Instant triggers for presentation & judges:
+      </div>
+      <div class="demo-buttons-group">
+        <button class="btn-demo btn-demo-reminder" onclick="window.CaregiverApp.demoTriggerReminder()" title="Triggers a chime and reminder alert on the senior screen">
+          🔔 Trigger Senior Reminder
+        </button>
+        <button class="btn-demo btn-demo-alert" onclick="window.CaregiverApp.demoSimulateMissed()" title="Simulates 30-min grace period expiration and alerts caregiver">
+          ⚠️ Simulate 30-Min Missed Escalation
+        </button>
+        <button class="btn-demo" onclick="window.CaregiverApp.demoSimulateRefill()" title="Simulates low pill count inventory warning">
+          📦 Simulate Low Refill Warning
+        </button>
+        <button class="btn-demo btn-demo-alert" onclick="window.CaregiverApp.demoSimulateSOS()" title="Simulates patient pressing Emergency SOS button">
+          🚨 Simulate Emergency SOS
+        </button>
+        <button class="btn-demo" style="background:#475569;" onclick="window.CaregiverApp.demoResetDatabase()" title="Reset all demo data back to clean initial state">
+          🔄 Reset Demo State
+        </button>
+      </div>
+    </section>
+
+    <!-- METRICS SUMMARY CARDS -->
+    <section class="stats-grid">
+      <div class="stat-card stat-total">
+        <div>
+          <div class="stat-label">Total Today</div>
+          <div id="stat-total-val" class="stat-value">5</div>
+        </div>
+        <div class="stat-icon-box">📋</div>
+      </div>
+
+      <div class="stat-card stat-completed">
+        <div>
+          <div class="stat-label">Completed</div>
+          <div id="stat-completed-val" class="stat-value">1</div>
+        </div>
+        <div class="stat-icon-box">✓</div>
+      </div>
+
+      <div class="stat-card stat-pending">
+        <div>
+          <div class="stat-label">Pending</div>
+          <div id="stat-pending-val" class="stat-value">4</div>
+        </div>
+        <div class="stat-icon-box">⏳</div>
+      </div>
+
+      <div class="stat-card stat-missed">
+        <div>
+          <div class="stat-label">Missed Doses</div>
+          <div id="stat-missed-val" class="stat-value">0</div>
+        </div>
+        <div class="stat-icon-box">✕</div>
+      </div>
+
+      <div class="stat-card stat-adherence">
+        <div>
+          <div class="stat-label">Weekly Adherence</div>
+          <div id="stat-adherence-val" class="stat-value">94%</div>
+        </div>
+        <div class="stat-icon-box">📈</div>
+      </div>
+    </section>
+
+    <!-- 2-COLUMN DASHBOARD GRID -->
+    <div class="dashboard-grid">
+
+      <!-- LEFT COLUMN: Adherence Scorecard & Today's Schedule -->
+      <main>
+        
+        <!-- CORE FEATURE 6: WEEKLY ADHERENCE SCORECARD -->
+        <div class="dashboard-panel">
+          <div class="panel-header">
+            <h3 class="panel-title">
+              📊 7-Day Adherence Scorecard
+            </h3>
+            <span style="font-size:0.82rem; color:var(--text-muted);">Real-Time Formula Computation</span>
+          </div>
+          <div id="adherence-container">
+            <!-- Dynamically populated by adherence.js -->
+          </div>
+        </div>
+
+        <!-- CORE FEATURE 2 & 4: TODAY'S MEDICATION SCHEDULE -->
+        <div class="dashboard-panel">
+          <div class="panel-header">
+            <h3 class="panel-title">
+              📅 Today's Medication Schedule & Adherence
+            </h3>
+            <span class="badge badge-success">Active Timetable</span>
+          </div>
+          <div style="overflow-x:auto;">
+            <table class="schedule-table">
+              <thead>
+                <tr>
+                  <th>Time</th>
+                  <th>Medication & Dose</th>
+                  <th>Status</th>
+                  <th>Confirmed Time</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="today-schedule-tbody">
+                <!-- Dynamically populated by caregiver.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </main>
+
+      <!-- RIGHT COLUMN: Real-Time Alerts Feed & Inventory Monitor -->
+      <aside>
+
+        <!-- CORE FEATURE 5: MISSED DOSE ESCALATIONS & ALERTS FEED -->
+        <div class="dashboard-panel">
+          <div class="panel-header">
+            <h3 class="panel-title">
+              🔔 Caregiver Alerts & Escalations
+            </h3>
+            <span class="badge badge-danger">Live Feed</span>
+          </div>
+          <div id="alerts-feed-list" class="alert-list">
+            <!-- Dynamically populated by caregiver.js -->
+          </div>
+        </div>
+
+        <!-- STRETCH FEATURE 9: MEDICINE INVENTORY & REFILL ALERTS -->
+        <div class="dashboard-panel">
+          <div class="panel-header">
+            <h3 class="panel-title">
+              📦 Pill Inventory & Refills
+            </h3>
+            <span style="font-size:0.8rem; color:var(--text-muted);">Alert threshold: &le; 5 pills</span>
+          </div>
+          <div id="inventory-list" class="inventory-list">
+            <!-- Dynamically populated by caregiver.js -->
+          </div>
+        </div>
+
+      </aside>
+
+    </div>
+
+  </div>
+
+  <!-- CORE FEATURE 2: MEDICATION SCHEDULE CONFIGURATOR MODAL -->
+  <div id="add-med-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:999; align-items:center; justify-content:center; padding:20px;">
+    <div style="background:#ffffff; border-radius:var(--radius-lg); padding:32px; max-width:520px; width:100%; box-shadow:var(--shadow-xl);">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+        <h3 style="font-size:1.35rem; font-weight:800; color:var(--text-main);">Configure New Prescription</h3>
+        <button style="border:none; background:transparent; font-size:1.5rem; cursor:pointer;" onclick="window.CaregiverApp.closeAddMedicationModal()">✕</button>
+      </div>
+
+      <form onsubmit="window.CaregiverApp.handleAddMedicationSubmit(event)">
+        <div style="margin-bottom:14px;">
+          <label style="display:block; font-weight:700; font-size:0.88rem; margin-bottom:4px;">Medicine Name</label>
+          <input type="text" name="name" required placeholder="e.g. Lisinopril" class="form-input" style="width:100%; padding:10px; border:1px solid #cbd5e1; border-radius:8px;">
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:14px;">
+          <div>
+            <label style="display:block; font-weight:700; font-size:0.88rem; margin-bottom:4px;">Dosage</label>
+            <input type="text" name="dosage" required placeholder="e.g. 10 mg" class="form-input" style="width:100%; padding:10px; border:1px solid #cbd5e1; border-radius:8px;">
+          </div>
+          <div>
+            <label style="display:block; font-weight:700; font-size:0.88rem; margin-bottom:4px;">Frequency</label>
+            <select name="frequency" class="form-input" style="width:100%; padding:10px; border:1px solid #cbd5e1; border-radius:8px;">
+              <option value="Morning">Morning</option>
+              <option value="Afternoon">Afternoon</option>
+              <option value="Night">Night</option>
+              <option value="Twice Daily">Twice Daily</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:14px;">
+          <div>
+            <label style="display:block; font-weight:700; font-size:0.88rem; margin-bottom:4px;">Reminder Time</label>
+            <input type="time" name="scheduled_time" value="09:00" required class="form-input" style="width:100%; padding:10px; border:1px solid #cbd5e1; border-radius:8px;">
+          </div>
+          <div>
+            <label style="display:block; font-weight:700; font-size:0.88rem; margin-bottom:4px;">Total Pills Count</label>
+            <input type="number" name="remaining_pills" value="30" class="form-input" style="width:100%; padding:10px; border:1px solid #cbd5e1; border-radius:8px;">
+          </div>
+        </div>
+
+        <div style="margin-bottom:20px;">
+          <label style="display:block; font-weight:700; font-size:0.88rem; margin-bottom:4px;">Food Instruction</label>
+          <input type="text" name="food_instruction" placeholder="e.g. Take with food or breakfast" value="Take with a glass of water" class="form-input" style="width:100%; padding:10px; border:1px solid #cbd5e1; border-radius:8px;">
+        </div>
+
+        <div style="display:flex; justify-content:flex-end; gap:10px;">
+          <button type="button" class="btn btn-outline" onclick="window.CaregiverApp.closeAddMedicationModal()">
+            Cancel
+          </button>
+          <button type="submit" class="btn btn-primary" style="padding:10px 20px;">
+            Save Prescription
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Pure Frontend Scripts -->
+  <script src="./js/store.js"></script>
+  <script src="./js/voice.js"></script>
+  <script src="./js/adherence.js"></script>
+  <script src="./js/caregiver.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      window.CaregiverApp.init();
+    });
+  </script>
+</body>
+</html>

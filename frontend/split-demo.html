@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PillPing - Live Side-by-Side Hackathon Demo</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <style>
+    body {
+      background: #0f172a;
+      color: #ffffff;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      margin: 0;
+    }
+    .demo-top-header {
+      background: #1e293b;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid #334155;
+      flex-shrink: 0;
+    }
+    .demo-frames-wrapper {
+      display: flex;
+      flex: 1;
+      height: calc(100vh - 60px);
+      background: #0f172a;
+      gap: 12px;
+      padding: 12px;
+    }
+    .frame-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      background: #ffffff;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      border: 2px solid #334155;
+    }
+    .frame-container.senior-frame {
+      max-width: 48%;
+      border-color: #3b82f6;
+    }
+    .frame-container.caregiver-frame {
+      border-color: #10b981;
+    }
+    .frame-header-bar {
+      background: #1e293b;
+      color: #f8fafc;
+      padding: 10px 16px;
+      font-size: 0.9rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .frame-iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      background: #ffffff;
+    }
+    .badge-sync {
+      background: #059669;
+      color: #ffffff;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .badge-sync::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: #34d399;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #34d399;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="demo-top-header">
+    <div style="display:flex; align-items:center; gap:12px;">
+      <a href="./index.html" class="brand-logo" style="color:#ffffff;">
+        <div class="brand-icon">💊</div>
+        <div>PillPing <span style="font-weight:400; color:#94a3b8; font-size:1.05rem;">Live Dual-View Demo</span></div>
+      </a>
+      <span class="badge-sync">Real-Time Broadcast Sync Active</span>
+    </div>
+
+    <div style="font-size:0.88rem; color:#cbd5e1; display:flex; align-items:center; gap:16px;">
+      <span>💡 <strong>Quick Test:</strong> Click <em>"I TOOK MY MEDICINE"</em> on the Senior view &rarr; watch the Caregiver view update live!</span>
+      <a href="./index.html" class="btn btn-outline" style="color:#ffffff; border-color:#475569; padding:4px 12px; font-size:0.82rem;">Exit Split View</a>
+    </div>
+  </header>
+
+  <main class="demo-frames-wrapper">
+    <!-- Left: Senior Patient Screen -->
+    <div class="frame-container senior-frame">
+      <div class="frame-header-bar" style="background:#1d4ed8;">
+        <span>🧓 SENIOR PATIENT VIEW (High-Contrast & Tactile)</span>
+        <a href="./patient.html" target="_blank" style="color:#bfdbfe; font-size:0.78rem; text-decoration:none;">Open in new tab ↗</a>
+      </div>
+      <iframe src="./patient.html" class="frame-iframe" id="patient-frame"></iframe>
+    </div>
+
+    <!-- Right: Caregiver Portal -->
+    <div class="frame-container caregiver-frame">
+      <div class="frame-header-bar" style="background:#047857;">
+        <span>🩺 CAREGIVER DASHBOARD (Real-Time Adherence & Alerts)</span>
+        <a href="./caregiver.html" target="_blank" style="color:#a7f3d0; font-size:0.78rem; text-decoration:none;">Open in new tab ↗</a>
+      </div>
+      <iframe src="./caregiver.html" class="frame-iframe" id="caregiver-frame"></iframe>
+    </div>
+  </main>
+
+</body>
+</html>
